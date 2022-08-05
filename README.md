@@ -86,6 +86,6 @@ bb4f4b81-7757-460b-9263-743c9ea6fef6
 To all the peers that contribuited with their knowledge
 
 # Authors 🖋️
-UWABOR COLLINS @Beinglegendary
+UWABOR COLLINS <@Beinglegendary>
 Adesanmi Aderemi <adesanmiaderemi@gmail.com>
  
