@@ -50,7 +50,7 @@ test_console.py	    unittests for console
 ## Installation 🛠️
 Clone the repository and run the console.py
 
-$ git clone https://github.com/------/AirBnB_clone.git
+$ git clone https://github.com/Beinglegendary/AirBnB_clone.git
 ## Usage 🔧
 Method	Description
 create	Creates object of given class
@@ -86,5 +86,4 @@ bb4f4b81-7757-460b-9263-743c9ea6fef6
 To all the peers that contribuited with their knowledge
 
 # Authors 🖋️
-Chidozie Ogwalu @gentomacine
-Israel Adenuga @adexino0606
+UWABOR COLLINS @Beinglegendary
