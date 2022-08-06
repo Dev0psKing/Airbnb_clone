@@ -1,10 +1,9 @@
-footer {
+footer div {
     background-color: #00FF00;
     height: 60px;
     width: 100%;
+    text-align: center;
+    position: fixed;
     bottom: 0;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    line-height: 60px;
 }
