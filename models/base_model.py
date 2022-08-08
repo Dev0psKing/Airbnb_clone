@@ -1,60 +1,58 @@
-#!/usr/bin/python3
-"""Module for Base class
-Contains the Base class for the AirBnB clone console.
+#!/usr/bin/pyhon3
 """
-
+Parent class that will inherit
+"""
 import uuid
 from datetime import datetime
 from models import storage
 
 
 class BaseModel:
-
-    """Class for base model of object hierarchy."""
-
+    """Defines all common attributes/methods
+    """
     def __init__(self, *args, **kwargs):
-        """Initialization of a Base instance.
-
-        Args:
-            - *args: list of arguments
-            - **kwargs: dict of key-values arguments
+        """initializes all attributes
         """
-
-        if kwargs is not None and kwargs != {}:
-            for key in kwargs:
-                if key == "created_at":
-                    self.__dict__["created_at"] = datetime.strptime(
-                        kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
-                elif key == "updated_at":
-                    self.__dict__["updated_at"] = datetime.strptime(
-                        kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
-                else:
-                    self.__dict__[key] = kwargs[key]
-        else:
+        if not kwargs:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.updated_at = self.created_at
             storage.new(self)
+        else:
+            f = "%Y-%m-%dT%H:%M:%S.%f"
+            for key, value in kwargs.items():
+                if key == 'created_at' or key == 'updated_at':
+                    value = datetime.strptime(kwargs[key], f)
+                if key != '__class__':
+                    setattr(self, key, value)
 
     def __str__(self):
-        """Returns a human-readable string representation
-        of an instance."""
-
-        return "[{}] ({}) {}".\
-            format(type(self).__name__, self.id, self.__dict__)
+        """returns class name, id and attribute dictionary
+        """
+        class_name = "[" + self.__class__.__name__ + "]"
+        dct = {k: v for (k, v) in self.__dict__.items() if (not v) is False}
+        return class_name + " (" + self.id + ") " + str(dct)
 
     def save(self):
-        """Updates the updated_at attribute
-        with the current datetime."""
-
+        """updates last update time
+        """
         self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):
-        """Returns a dictionary representation of an instance."""
+        """creates a new dictionary, adding a key and returning
+        datemtimes converted to strings
+        """
+        new_dict = {}
 
-        my_dict = self.__dict__.copy()
-        my_dict["__class__"] = type(self).__name__
-        my_dict["created_at"] = my_dict["created_at"].isoformat()
-        my_dict["updated_at"] = my_dict["updated_at"].isoformat()
-        return my_dict
+        for key, values in self.__dict__.items():
+            if key == "created_at" or key == "updated_at":
+                new_dict[key] = values.strftime("%Y-%m-%dT%H:%M:%S.%f")
+            else:
+                if not values:
+                    pass
+                else:
+                    new_dict[key] = values
+        new_dict['__class__'] = self.__class__.__name__
+
+        return new_dict
