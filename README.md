@@ -66,4 +66,4 @@ The test for the classes are in the [test_models](./tests/test_models/) folder.
 ## Authors
 
 - [UWABOR COLLINS](https://https://github.com/Beinglegendary/Airbnb_clone) ~  ~ [@CodeByUwabor](https://twitter.com/CodeByUwabor):
-*Sharpening my skills at Alx/Holberton School of Software Engineering. I have a lifelong passion for programming and a daily meditation practice. Spent the last several years enjoying working as a private tutor and am now excited to practice software wizardry professionally.*
+
